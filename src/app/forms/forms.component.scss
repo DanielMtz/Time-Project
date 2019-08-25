@@ -1,0 +1,33 @@
+@import "../../styles.scss";
+
+.hr-styles {
+    border: 1px solid $primary-color;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.material-icon {
+    color: grey;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: white;
+}
+
+.table-title {
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+}
+
+
+
+
+
+
+

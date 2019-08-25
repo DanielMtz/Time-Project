@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./theme.scss";
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+$primary-color: #00bcd4;
+   
+html *
+{
+   font-family: 'Quicksand', sans-serif !important;
+}

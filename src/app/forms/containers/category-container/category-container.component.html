@@ -1,0 +1,48 @@
+<div mat-dialog-container class="mx-auto">
+    <h1 mat-dialog-title>Agregar Actividad</h1>
+    <div mat-dialog-content class="d-flex justify-content-center">
+        <form [formGroup]="activityForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input matInput type="text" placeholder="Categoría" 
+                formControlName="category" aria-label="category" [matAutocomplete]="autoCategory">
+                <mat-autocomplete #autoCategory="matAutocomplete">
+                    <mat-option *ngFor="let option of categoryOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text"  placeholder="Actividad" 
+                formControlName="activity" aria-label="activity" [matAutocomplete]="autoActivity">
+                <mat-autocomplete #autoActivity="matAutocomplete">
+                    <mat-option *ngFor="let option of activityOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker"  placeholder="Fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [ngxTimepicker]="toggleTimepicker" placeholder="Hora de Inicio">
+                <ngx-material-timepicker-toggle matSuffix [for]="toggleTimepicker">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="24px" height="24px" ngxMaterialTimepickerToggleIcon fill="grey">
+                        <path d="M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M16,16H7.995 C7.445,16,7,15.555,7,15.005v-0.011C7,14.445,7.445,14,7.995,14H14V5.995C14,5.445,14.445,5,14.995,5h0.011 C15.555,5,16,5.445,16,5.995V16z"/>
+                    </svg>
+                </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker touchUi #toggleTimepicker></ngx-material-timepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [ngxTimepicker]="toggleTimepickerEnd" placeholder="Hora de Fin">
+                <ngx-material-timepicker-toggle matSuffix [for]="toggleTimepickerEnd"> </ngx-material-timepicker-toggle>
+                <ngx-material-timepicker touchUi #toggleTimepickerEnd></ngx-material-timepicker>
+            </mat-form-field>
+        </form>
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-end">
+        <button mat-button (click)="onNoClick()">Close</button>
+        <button mat-button class="btn-primary" [mat-dialog-close]="data.category" cdkFocusInitial>Save</button>
+    </div>
+</div>

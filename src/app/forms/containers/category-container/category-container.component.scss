@@ -1,0 +1,70 @@
+@import "../../../../styles.scss";
+
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: white;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-dialog-title {
+    font-weight: bold;
+    border-bottom: 1px solid $primary-color;
+    align-content: center;
+}
+
+.mat-dialog-container {
+    border: 1px solid $primary-color;
+}
+
+.mat-calendar-body-selected {
+    background-color: $primary-color !important;
+}
+
+::ng-deep .cdk-overlay-container {
+    z-index:2000;
+}
+
+::ng-deep .timepicker-backdrop-overlay { 
+    background-color: rgba(0, 0, 0, 0.001) !important;
+}
+
+::ng-deep .ngx-material-timepicker-toggle { 
+    fill: grey;
+}
+
+::ng-deep .mat-form-field {
+    .mat-input-element {
+        color: slategray;
+    }
+    .mat-form-field-label {
+        color: slategray;
+    }
+    .mat-form-field-underline {
+        background-color: slategray;
+    }
+    .mat-form-field-ripple {
+        background-color: slategray;
+    }
+    .mat-form-field-required-marker {
+        color: slategray;
+    }
+}
+
+::ng-deep .mat-form-field.mat-focused {
+    .mat-form-field-label {
+        color: $primary-color;
+    }
+    .mat-form-field-ripple {
+        background-color: $primary-color;
+    }
+    .mat-form-field-required-marker {
+        color: $primary-color;
+    }
+    .mat-input-element {
+        color: $primary-color;
+    }
+}
