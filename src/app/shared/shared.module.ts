@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
-import { MatAutocompleteModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatNativeDateModule, MatTableModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MAT_DIALOG_DATA, MatButtonModule } from '@angular/material';
+import { MatAutocompleteModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule, MatSlideToggleModule, MatNativeDateModule, MatTableModule, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MAT_DIALOG_DATA, MatButtonModule, MatMenuModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { ChartsModule } from 'ng2-charts';
 
 const modules = [
   MatAutocompleteModule,
@@ -21,7 +22,9 @@ const modules = [
   NgxMaterialTimepickerModule,
   MatTableModule,
   MatDialogModule,
-  MatButtonModule
+  MatButtonModule,
+  MatMenuModule,
+  ChartsModule
 ];
 
 const components = [HeaderComponent];
@@ -35,8 +38,7 @@ const components = [HeaderComponent];
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: MatDialogRef},
-    { provide: MAT_DIALOG_DATA,
-      useValue: {}}
+    {provide: MAT_DIALOG_DATA, useValue: {}}
   ]
 })
 export class SharedModule { }

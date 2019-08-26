@@ -77,7 +77,8 @@ export class CategoryContainerComponent implements OnInit, OnChanges {
             "Estudio",
             "Ejecución de Tareas",
             "Clases",
-            "Asesorías"
+            "Asesorías",
+            "Otro"
           ]
         } else if(category == "Personal") {
           this.activityLabels = [
@@ -87,7 +88,8 @@ export class CategoryContainerComponent implements OnInit, OnChanges {
             "Relajación",
             "Eventos sociales",
             "Convivencia Familar",
-            "Sueño"
+            "Sueño",
+            "Otro"
           ]
         } else if(category == "Extracurricular") {
           this.activityLabels = [
@@ -95,7 +97,8 @@ export class CategoryContainerComponent implements OnInit, OnChanges {
             "Recreación",
             "Idiomas",
             "Comites / Grupos",
-            "Conferencias / Talleres"
+            "Conferencias / Talleres",
+            "Otro"
           ]
         }
         this.activityOptions = this.activityForm.controls.activity.valueChanges
