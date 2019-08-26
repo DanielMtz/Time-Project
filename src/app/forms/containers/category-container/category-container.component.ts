@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export interface DialogData {
   templateUrl: './category-container.component.html',
   styleUrls: ['./category-container.component.scss']
 })
-export class CategoryContainerComponent implements OnInit {
+export class CategoryContainerComponent implements OnInit, OnChanges {
   activityForm = new FormGroup({
     category: new FormControl(),
     activity: new FormControl(),
@@ -30,11 +30,7 @@ export class CategoryContainerComponent implements OnInit {
     'Personal',
     'Extracurricular'
   ];
-  activityLabels: string[] = [
-    'Semestre i',
-    'Personal',
-    'Extracurricular'
-  ];
+  activityLabels: string[] = [];
   categoryOptions: Observable<string[]>;
   activityOptions: Observable<string[]>;
 
@@ -46,19 +42,21 @@ export class CategoryContainerComponent implements OnInit {
     this.categoryOptions = this.activityForm.controls.category.valueChanges
     .pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map(value => this._filterCat(value))
       );
-    this.activityOptions = this.activityForm.controls.activity.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-      );
+      this.ngOnChanges();
     }
   
-    private _filter(value: string): string[] {
+    private _filterCat(value: string): string[] {
       const filterValue = value.toLowerCase();
       return this.categoryLabels.filter(option => option.toLowerCase().includes(filterValue)); 
     }    
+
+    private _filterAct(value: string): string[] {
+      const filterValue = value.toLowerCase();
+      return this.activityLabels.filter(option => option.toLowerCase().includes(filterValue)); 
+    }    
+
 
     onSubmit() {
       // TODO: Use EventEmitter with form value
@@ -67,6 +65,45 @@ export class CategoryContainerComponent implements OnInit {
 
     onNoClick(): void {
       this.dialogRef.close();
+      
+    }
+
+    ngOnChanges() {
+      this.activityForm.controls.category.valueChanges.subscribe((category:string) => {
+        if(category == "Semestre i") {
+          this.activityLabels = [
+            "Visitas a Empresa",
+            "Lectura",
+            "Estudio",
+            "Ejecución de Tareas",
+            "Clases",
+            "Asesorías"
+          ]
+        } else if(category == "Personal") {
+          this.activityLabels = [
+            "Comida",
+            "Aseo",
+            "Ejercicio",
+            "Relajación",
+            "Eventos sociales",
+            "Convivencia Familar",
+            "Sueño"
+          ]
+        } else if(category == "Extracurricular") {
+          this.activityLabels = [
+            "Deporte",
+            "Recreación",
+            "Idiomas",
+            "Comites / Grupos",
+            "Conferencias / Talleres"
+          ]
+        }
+        this.activityOptions = this.activityForm.controls.activity.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filterAct(value))
+          );
+      });
     }
   }
   
